@@ -1,6 +1,6 @@
 ﻿namespace weapi.Event_.Ultils
 {
-    public class Criptografia
+    public static class Criptografia
     {
         public static string GerarHash(string senha)
         {
@@ -9,7 +9,7 @@
 
         public static bool CompararHash(string senhaForm, string senhaBanco)
         {
-            return BCrypt.Net.BCrypt.Verify(senhaBanco, senhaForm);
+            return BCrypt.Net.BCrypt.Verify(senhaForm, senhaBanco);
         }
     }
 }

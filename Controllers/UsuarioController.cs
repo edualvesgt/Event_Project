@@ -2,6 +2,7 @@
 using weapi.Event_.Domains;
 using weapi.Event_.Interfaces;
 using weapi.Event_.Repositories;
+using weapi.Event_.ViewModels;
 
 namespace weapi.Event_.Controllers
 {
@@ -48,5 +49,7 @@ namespace weapi.Event_.Controllers
             }
 
         }
+
+
     }
 }

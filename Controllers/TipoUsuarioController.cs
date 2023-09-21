@@ -31,5 +31,32 @@ namespace weapi.Event_.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{id}")]
+
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_tipoUsuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception e )
+            {
+
+                return BadRequest(e.Message);
+            }
+            
+        }
+
+        [HttpGet("ListTypes")]
+
+        public IActionResult GetBylist() 
+        {
+            List<TipoUsuario>list = _tipoUsuarioRepository.Listar();
+
+            return StatusCode(200, list);
+        
+        }
     }
+
 }

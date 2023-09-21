@@ -17,12 +17,12 @@ namespace weapi.Event_.Domains
 
         [Column(TypeName = "VARCHAR(100)")]
         [Required(ErrorMessage = "Email do usuario Obrigatorio")]
-        public String? Email { get; set; }
+        public string? Email { get; set; }
 
-        [Column(TypeName = "CHAR(100)")]
+        [Column(TypeName = "CHAR(60)")]
         [Required(ErrorMessage = "Senha do usuario Obrigatorio")]
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "Senha deve Conter de 6 a 100 caracteres")]
-        public String? Senha { get; set; }
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "Senha deve Conter de 6 a 100 caracteres")]
+        public string? Senha { get; set; }
 
         //Referencia da tabela tipo usuario
 

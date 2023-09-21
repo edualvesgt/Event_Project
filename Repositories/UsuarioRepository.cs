@@ -23,7 +23,7 @@ namespace weapi.Event_.Repositories
                      {
                          IdUsuario = u.IdUsuario,
                          Nome = u.Nome,
-                         Email= u.Email,
+                         Email = u.Email,
                          TipoUsuario = new TipoUsuario
                          {
                              IdTipoUsuario = u.IdTipoUsuario,
@@ -50,19 +50,37 @@ namespace weapi.Event_.Repositories
 
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
-            Usuario user =  _eventContext.Usuario.FirstOrDefault(u => u.Email! == email)!;
-
-            if (user != null)
+            try
             {
-                bool confere = Criptografia.CompararHash(senha , user.Senha!);
+                Usuario user = _eventContext.Usuario
+                    .Select(u => new Usuario
+                    {
+                        IdUsuario = u.IdUsuario,
+                        Nome = u.Nome,
+                        Email = u.Email,
+                        Senha = u.Senha,
+                        TipoUsuario = new TipoUsuario
+                        {
+                            IdTipoUsuario = u.IdTipoUsuario,
+                            Titulo = u.TipoUsuario!.Titulo
+                        }
+                    }).FirstOrDefault(u => u.Email == email)!;
 
-                if (confere)
+                if (user != null)
                 {
-                    return user;
-                }
-            }
+                    bool confere = Criptografia.CompararHash(senha, user.Senha!);
 
-            return null!;
+                    if (confere)
+                    {
+                        return user;
+                    }
+                }
+                return null!;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Cadastrar(Usuario usuario)

@@ -12,8 +12,8 @@ using weapi.Event_.Contexts;
 namespace weapi.Event_.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20230919114125_BdEvent+")]
-    partial class BdEvent
+    [Migration("20230921130529_BD2")]
+    partial class BD2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -184,8 +184,8 @@ namespace weapi.Event_.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("CHAR(100)");
+                        .HasMaxLength(60)
+                        .HasColumnType("CHAR(60)");
 
                     b.HasKey("IdUsuario");
 

@@ -5,7 +5,7 @@ namespace weapi.Event_.Contexts
 {
     public class EventContext : DbContext
     {
-        public DbSet<TipoUsuario> TipoUsuarios { get; set; }
+        public DbSet<TipoUsuario> TipoUsuario { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<TipoEvento> TipoEvento { get; set; }
         public DbSet<Evento> Evento { get; set; }
