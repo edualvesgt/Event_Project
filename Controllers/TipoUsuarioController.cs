@@ -57,6 +57,35 @@ namespace weapi.Event_.Controllers
             return StatusCode(200, list);
         
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(Guid id)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Deletar(id);
+                return StatusCode(204);
+            }
+            catch (Exception e )
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update (Guid id , TipoUsuario tipo)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Atualizar(id, tipo);
+                return NoContent();
+            }
+            catch (Exception e )
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 
 }

@@ -14,7 +14,12 @@ namespace weapi.Event_.Repositories
         }
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
-            throw new NotImplementedException();
+            //Recebe salva a busca feita pela expressao no obj user e igualando ela ao recebetido 
+            TipoUsuario user = _eventContext.TipoUsuario.FirstOrDefault(x => x.IdTipoUsuario == id)!;
+            user.Titulo = tipoUsuario.Titulo;
+
+            _eventContext.TipoUsuario.Update(user);
+            _eventContext.SaveChanges();
         }
 
         public TipoUsuario BuscarPorId(Guid id)
@@ -53,7 +58,11 @@ namespace weapi.Event_.Repositories
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            TipoUsuario find = _eventContext.TipoUsuario.Find(id)!;
+
+            _eventContext.TipoUsuario.Remove(find);
+
+            _eventContext.SaveChanges();
         }
 
         public List<TipoUsuario> Listar()
